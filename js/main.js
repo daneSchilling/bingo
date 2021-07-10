@@ -69,15 +69,49 @@ var stopWatch;
 var _pauseSeconds = 5;
 
 function startGame() {
+  stopWatch.stop();
+  stopWatch.reset();
   stopWatch.start();
   $("#start-btn").attr("disabled", "disabled");
+
+  var gameType = $("#game-type").find(":selected").text();
+
+  if(gameType == "X")
+  {
+    for(var i = 0; i < balls.length; ++i) {
+      if(balls[i].startsWith("N")) {
+        usedBalls.push(i);
+      }
+    }
+  } else if(gameType == "Four Corners") {
+    for(var i = 0; i < balls.length; ++i) {
+      if(balls[i].startsWith("I") || balls[i].startsWith("N") || balls[i].startsWith("G")) {
+        usedBalls.push(i);
+      }
+    }
+  }
+
   setBall();
 }
 
 function resetGame() {
   stopWatch.stop();
   stopWatch.reset();
-  
+  lastTicks = 0;
+
+  usedBalls = [-1];
+  $("#ball").html('');
+  $("#balls").html('');
+  $("#start-btn").removeAttr("disabled");
+}
+
+function togglePauseGame() {
+
+
+  stopWatch.stop();
+  stopWatch.reset();
+  lastTicks = 0;
+
   usedBalls = [-1];
   $("#ball").html('');
   $("#balls").html('');

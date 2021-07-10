@@ -34,6 +34,7 @@
   <br/>
   <br/>
   <button type="button" class="btn btn-success" id="start-btn" onclick="startGame()">Start</button>
+  <button type="button" class="btn btn-success" id="pause-btn" onclick="togglePauseGame()">Pause</button>
   <button type="button" class="btn btn-secondary" onclick="resetGame()">Reset Game</button>
 
   <br/>
@@ -47,6 +48,16 @@
       <option>20</option>
       <option>25</option>
       <option>30</option>
+    </select>&nbsp;seconds
+  </small>
+  <br/>
+  <br/>
+  <small>
+    Type of game: &nbsp;
+    <select id="game-type">
+      <option selected>Most Games</option>
+      <option>Four Corners</option>
+      <option>X</option>
     </select>
   </small>
   </div>
